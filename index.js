@@ -1,4 +1,5 @@
 var inquirer = require("inquirer");
+var axios = require("axios");
 
 
 inquirer.prompt([
@@ -24,6 +25,13 @@ inquirer.prompt([
     //     console.log(gitResponse);
     // });
 
+    axios.get("https://api.github.com/users/" + response.username).then(function(gitResponse){
+        console.log(gitResponse)
+    }).catch(function(error){
+        console.log(error);
+    }).finally(function(){
+
+    });
 
 
 });
