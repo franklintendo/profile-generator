@@ -1,5 +1,6 @@
 var inquirer = require("inquirer");
 
+
 inquirer.prompt([
     {
         type: "list",
@@ -15,4 +16,14 @@ inquirer.prompt([
 ]).then(function(response){
     console.log(response.color);
     console.log(response.username);
+
+    // $.ajax({
+    //     url: "https://api.github.com/users/" + response.username,
+    //     method: "GET"
+    // }).then(function(gitResponse){
+    //     console.log(gitResponse);
+    // });
+
+
+
 });
