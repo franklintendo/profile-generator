@@ -55,7 +55,7 @@ inquirer.prompt([
 
         // Number of users following
         console.log(gitResponse.data.following);
-
+        
         // Get list of stars
         // axios.get("https://api.github.com/users/" + response.username + "/starred").then(function(starResponse){
         //     console.log(starResponse);
