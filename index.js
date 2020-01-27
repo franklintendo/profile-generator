@@ -1,26 +1,11 @@
-var inquirer = require("inquirer");
-var axios = require("axios");
-const HTML5ToPDF = require("../lib")
-const path = require("path")
+const inquirer = require("inquirer");
+const axios = require("axios");
+const HTML5ToPDF = require("./node_modules/html5-to-pdf/lib");
+const path = require("path");
+// const html = require("./assets/basic.html");
 
-const run = async () => {
-  const html5ToPDF = new HTML5ToPDF({
-    inputPath: path.join(__dirname, "assets", "basic.html"),
-    outputPath: path.join(__dirname, "..", "tmp", "output.pdf"),
-    templatePath: path.join(__dirname, "templates", "basic"),
-    include: [
-      path.join(__dirname, "assets", "basic.css"),
-      path.join(__dirname, "assets", "custom-margin.css"),
-    ],
-  })
 
-  await html5ToPDF.start()
-  await html5ToPDF.build()
-  await html5ToPDF.close()
-  console.log("DONE")
-  process.exit(0)
-}
-
+var gitHubUsername = "TEST";
 
 inquirer.prompt([
     {
@@ -45,10 +30,11 @@ inquirer.prompt([
     }).then(function(gitResponse){
 
         // console.log(gitResponse)
-        // Profile image
-        console.log(gitResponse.data.login);
-
         // User name
+        console.log(gitResponse.data.login);
+        gitHubUsername = gitResponse.data.login;
+
+        // Profile image
         console.log(gitResponse.data.avatar_url);
 
         // Links to the following:
@@ -76,11 +62,48 @@ inquirer.prompt([
         // Number of users following
         console.log(gitResponse.data.following);
         
+        
+
         // Get list of stars
         // axios.get("https://api.github.com/users/" + response.username + "/starred").then(function(starResponse){
         //     console.log(starResponse);
         // });
+
+        // module.exports = {
+        //     name: gitResponse.data.login
+        // }
+
+        return run();
     });
 
 
 });
+
+
+
+const run = async () => {
+    
+
+    const html5ToPDF = new HTML5ToPDF({
+      inputPath: path.join(__dirname, "assets", "basic.html"),
+      inputTemplate: "htmlbootstrap",
+      inputBody: "<div class='text-center'>" + gitHubUsername + "</div>",
+      outputPath: path.join(__dirname, "assets", gitHubUsername + ".pdf"),
+    //   templatePath: path.join(__dirname, "assets", "basic"),
+      // include: [
+      //   path.join(__dirname, "assets", "basic.css"),
+      //   path.join(__dirname, "assets", "custom-margin.css"),
+      // ],
+    })
+  
+    await html5ToPDF.start()
+    await html5ToPDF.build() 
+    await html5ToPDF.close()
+    console.log("DONE")
+    process.exit(0)
+  }
+
+  
+//   module.exports = {
+//     name: gitHubUsername
+//     }
