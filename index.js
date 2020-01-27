@@ -36,6 +36,7 @@ inquirer.prompt([
 
         // Profile image
         console.log(gitResponse.data.avatar_url);
+        gitHubImg = gitResponse.data.avatar_url;
 
         // Links to the following:
         // User location via Google Maps
@@ -62,16 +63,11 @@ inquirer.prompt([
         // Number of users following
         console.log(gitResponse.data.following);
         
-        
+        module.exports = {
+            name: gitHubUsername,
+            image: gitHubImg
+        }
 
-        // Get list of stars
-        // axios.get("https://api.github.com/users/" + response.username + "/starred").then(function(starResponse){
-        //     console.log(starResponse);
-        // });
-
-        // module.exports = {
-        //     name: gitResponse.data.login
-        // }
 
         return run();
     });
@@ -86,14 +82,23 @@ const run = async () => {
 
     const html5ToPDF = new HTML5ToPDF({
       inputPath: path.join(__dirname, "assets", "basic.html"),
-      inputTemplate: "htmlbootstrap",
-      inputBody: "<div class='text-center'>" + gitHubUsername + "</div>",
+    //   inputTemplate: "htmlbootstrap",
+    //   inputBody: "<div class='text-center'>" + gitHubUsername + "</div>",
       outputPath: path.join(__dirname, "assets", gitHubUsername + ".pdf"),
+    //   renderDelay: 5000,
     //   templatePath: path.join(__dirname, "assets", "basic"),
-      // include: [
-      //   path.join(__dirname, "assets", "basic.css"),
-      //   path.join(__dirname, "assets", "custom-margin.css"),
-      // ],
+      include: [
+        // path.join(__dirname, "assets", "basic.css"),
+        // path.join(__dirname, "assets", "custom-margin.css"),
+        {
+            type: "css",
+            filePath: "./assets/basic.css"
+        },
+        {
+            type: "js",
+            filePath: "./assets/edit-el.js"
+        }
+      ],
     })
   
     await html5ToPDF.start()
