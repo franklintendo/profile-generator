@@ -5,7 +5,7 @@ const path = require("path");
 // const html = require("./assets/basic.html");
 
 
-var gitHubUsername = "TEST";
+let gitHubUsername = "TEST";
 
 inquirer.prompt([
     {
@@ -26,7 +26,7 @@ inquirer.prompt([
     var username = response.username;
 
     axios.get("https://api.github.com/users/" + response.username).catch(function(error){
-        console.log("no user found");
+        console.log("there was an error");
     }).then(function(gitResponse){
 
         // console.log(gitResponse)
