@@ -13,6 +13,8 @@
     display: inline-block; 
     border-radius: .25em; 
     border: 1px solid #e1e1e1;
+    background-color: rgb(93, 173, 226);
+    margin: 20px;
 }
 
 .blue {

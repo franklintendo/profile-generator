@@ -13,6 +13,7 @@ let gitHubPage = "";
 let gitHubRepos = "";
 let gitHubFollowing = "";
 let gitHubFollowers = "";
+let gitHubStars = 0;
 
 inquirer.prompt([
     {
@@ -32,10 +33,9 @@ inquirer.prompt([
     userColor = response.color;
     // response.username;
 
-    axios.get("https://api.github.com/users/" + response.username).catch(function(error){
-        console.log("there was an error");
-    }).then(function(gitResponse){
+    
 
+    axios.get("https://api.github.com/users/" + response.username).then(function(gitResponse){
         // console.log(gitResponse)
         // User name
         console.log(gitResponse.data.login);
@@ -70,15 +70,30 @@ inquirer.prompt([
         console.log(gitResponse.data.followers);
         gitHubFollowers = gitResponse.data.followers;
 
-        // Number of GitHub stars
-        // console.log(gitResponse.data.);
+        
 
         // Number of users following
         console.log(gitResponse.data.following);
         gitHubFollowing = gitResponse.data.following;
 
+        // Make API call for 
+        // the number of stars
+        // by counting repos
+        axios.get("https://api.github.com/users/" + response.username + "/repos").then(function(repos){
+          // console.log(repos.data);
+          let reposArr = repos.data;
+          
+          reposArr.forEach(repo => {
+            // Number of GitHub stars
+              gitHubStars += repo.stargazers_count;
+              // console.log("stars counted:  " + gitHubStars);
+          });
 
-        return run();
+          return run();
+        });
+        
+
+        // return run();
     });
 
 
@@ -113,7 +128,7 @@ const run = async () => {
       <div class="text-center">
         <div style="" class="text-center bucket">
             <h2>GitHub Stars</h2>
-            <h3></h3>
+            <h3>${gitHubStars}</h3>
         </div>
         <div style="" class="text-center bucket">
             <h2>Following</h2>
