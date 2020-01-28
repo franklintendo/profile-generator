@@ -1,11 +1,40 @@
+@media print { 
+    /* All your print styles go here */
+    body, html {
+        background-color: #f6f5f5;
+        -webkit-print-color-adjust:exact !important;
+        font-family: Tahoma, Geneva, sans-serif;
+    }
+}
+
+body, html {
+    -webkit-print-color-adjust:exact !important;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, serif;
+}
+
+h2 {
+    padding-top: 75px;
+}
+
+
+
 .text-center {
     text-align: center;
 }
-
+.main-bucket {
+    padding: 75px 50px 50px;
+}
 .profile-pic {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     border-radius: .25em;
+    /* margin-top: 150px; */
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
 }
 
 .bucket {
@@ -13,26 +42,53 @@
     display: inline-block; 
     border-radius: .25em; 
     border: 1px solid #e1e1e1;
-    background-color: rgb(93, 173, 226);
     margin: 20px;
+    height: 250px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+}
+
+.bucket-blue {
+    background-color: #AED6F1;
+    -webkit-print-color-adjust:exact !important;
+}
+
+.bucket-red {
+    background-color: #E6B0AA;
+    -webkit-print-color-adjust:exact !important;
+}
+
+.bucket-green {
+    background-color: #ABEBC6;
+    -webkit-print-color-adjust:exact !important;
+}
+
+.bucket-pink {
+    background-color: #FDEDEC;
+    -webkit-print-color-adjust:exact !important;
 }
 
 .blue {
     background-color: #3498DB;
     color: #FFFFFF;
+    -webkit-print-color-adjust:exact !important;
 }
 
 .red {
     background-color: #C0392B;
     color: #FFFFFF;
+    -webkit-print-color-adjust:exact !important;
 }
 
 .green {
     background-color: #27AE60;
     color: #FFFFFF;
+    -webkit-print-color-adjust:exact !important;
 }
 
 .pink {
     background-color: #F5B7B1;
     color: #FFFFFF;
+    -webkit-print-color-adjust:exact !important;
 }

@@ -108,7 +108,7 @@ const run = async () => {
       inputPath: path.join(__dirname, "assets", "basic.html"),
       inputTemplate: "htmlbootstrap",
       inputBody: `
-      <div class="text-center ${userColor}">
+      <div class="main-bucket text-center ${userColor}">
         <img class="profile-pic" src="${gitHubImg}" alt="" />
         <h1>${gitHubUsername}</h1>
         <p>${gitHubBio}</p>
@@ -116,21 +116,21 @@ const run = async () => {
         <span><a href="${gitHubBlog}">Blog</a></span>
       </div>
       <div class="text-center">
-        <div style="" class="text-center bucket">
+        <div style="" class="text-center bucket bucket-${userColor}">
                 <h2>Public Repositories</h2>
                 <h3>${gitHubRepos}</h3>
         </div>
-        <div style="" class="text-center bucket">
+        <div style="" class="text-center bucket bucket-${userColor}">
                 <h2>Followers</h2>
                 <h3>${gitHubFollowers}</h3>
         </div>
       </div>
       <div class="text-center">
-        <div style="" class="text-center bucket">
+        <div style="" class="text-center bucket bucket-${userColor}">
             <h2>GitHub Stars</h2>
             <h3>${gitHubStars}</h3>
         </div>
-        <div style="" class="text-center bucket">
+        <div style="" class="text-center bucket bucket-${userColor}">
             <h2>Following</h2>
             <h3>${gitHubFollowing}</h3>
         </div>
