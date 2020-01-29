@@ -15,6 +15,7 @@ h1, h2, h3 {
     font-family: Georgia, serif;
 }
 
+
 h2 {
     padding-top: 75px;
 }
@@ -27,14 +28,26 @@ h2 {
 .main-bucket {
     padding: 75px 50px 50px;
 }
+
+.main-bucket span {
+    padding: 10px 25px;
+    color: #FFFFFF;
+}
+
+.main-bucket span a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
 .profile-pic {
     height: 150px;
     width: 150px;
     border-radius: .25em;
     /* margin-top: 150px; */
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    /* -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15); */
 }
 
 .bucket {
@@ -44,9 +57,9 @@ h2 {
     border: 1px solid #e1e1e1;
     margin: 20px;
     height: 250px;
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    /* -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15); */
 }
 
 .bucket-blue {

@@ -4,6 +4,7 @@ const HTML5ToPDF = require("./node_modules/html5-to-pdf/lib");
 const path = require("path");
 
 let userColor = "";
+let gitHubName = "";
 let gitHubUsername = "";
 let gitHubImg = "";
 let gitHubBio = "";
@@ -37,6 +38,10 @@ inquirer.prompt([
 
     axios.get("https://api.github.com/users/" + response.username).then(function(gitResponse){
         // console.log(gitResponse)
+        // Name
+        console.log(gitResponse.data.name);
+        gitHubName = gitResponse.data.name;
+
         // User name
         console.log(gitResponse.data.login);
         gitHubUsername = gitResponse.data.login;
@@ -110,7 +115,7 @@ const run = async () => {
       inputBody: `
       <div class="main-bucket text-center ${userColor}">
         <img class="profile-pic" src="${gitHubImg}" alt="" />
-        <h1>${gitHubUsername}</h1>
+        <h1>${gitHubName}</h1>
         <p>${gitHubBio}</p>
         <span><a href="https://maps.google.com/?q=${gitHubLocation}">${gitHubLocation}</a></span> <span><a href="${gitHubPage}">GitHub</a></span>
         <span><a href="${gitHubBlog}">Blog</a></span>
@@ -137,7 +142,7 @@ const run = async () => {
       </div>
       `,
       outputPath: path.join(__dirname, "assets", gitHubUsername + ".pdf"),
-      renderDelay: 5000,
+      renderDelay: 3000,
     //   templatePath: path.join(__dirname, "assets", "basic"),
       include: [
         path.join(__dirname, "assets", "basic.css")
